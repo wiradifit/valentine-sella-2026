@@ -1,0 +1,204 @@
+:root {
+    --primary-color: #ff4d6d;
+    --secondary-color: #ff8fa3;
+    --bg-color: #fff0f3; /* Soft pink background */
+    --text-color: #590d22;
+    --white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    overflow-x: hidden;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+}
+
+/* Balloon Background */
+#balloon-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.balloon {
+    position: absolute;
+    bottom: -100px;
+    font-size: 2rem;
+    animation: floatUp 15s linear infinite;
+    opacity: 0.7;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-120vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Landing Section */
+#landing {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+    text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.5);
+    padding: 0 1rem;
+}
+
+.bounce {
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-20px); }
+    60% { transform: translateY(-10px); }
+}
+
+.buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    position: relative; /* Container for relative positioning */
+}
+
+button {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 15px rgba(255, 77, 109, 0.3);
+}
+
+#yes-btn {
+    background-color: var(--primary-color);
+    color: var(--white);
+    z-index: 20; /* Ensure YES is always clickable */
+}
+
+#yes-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(255, 77, 109, 0.5);
+}
+
+#no-btn {
+    background-color: var(--white);
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    position: relative; /* Default position */
+    transition: all 0.3s ease; /* Smooth movement */
+}
+
+#no-btn.moving {
+    position: fixed; /* Switch to fixed when it starts moving */
+}
+
+/* Gallery Section */
+#gallery {
+    min-height: 100vh;
+    background: linear-gradient(180deg, var(--bg-color) 0%, #fff 100%);
+    padding: 4rem 1rem;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+#gallery.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#gallery.hidden {
+    display: none;
+}
+
+#gallery h2 {
+    font-family: 'Pacifico', cursive;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+}
+
+.photo-frame {
+    background: white;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transform: rotate(-3deg);
+    margin-bottom: 3rem;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.meme-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.meme-card {
+    background: white;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.placeholder-img, .placeholder-meme {
+    width: 100%;
+    height: 300px; /* Placeholder height */
+    background-color: #ffccd5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    margin-bottom: 0.5rem;
+}
+
+.placeholder-meme {
+    height: 200px;
+}
+
+footer {
+    margin-top: 4rem;
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+}
